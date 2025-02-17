@@ -1,5 +1,5 @@
-import BingoBoard from "./[components]/BingoBoard";
-import Leaderboard from "./[components]/Leaderboard";
+import BingoBoard from "./(components)/BingoBoard";
+import Leaderboard from "./(components)/Leaderboard";
 
 export default function HomePageContent() {
   return (
