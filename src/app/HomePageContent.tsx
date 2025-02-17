@@ -1,3 +1,5 @@
+"use client";
+
 import BingoBoard from "./(components)/BingoBoard";
 import Leaderboard from "./(components)/Leaderboard";
 
