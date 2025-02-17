@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let firebase_app =
+let firebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-export default firebase_app;
+export default firebaseApp;

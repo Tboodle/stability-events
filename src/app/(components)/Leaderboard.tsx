@@ -1,4 +1,4 @@
-import useTeams from "../(hooks)/useTeams";
+import { useTeams } from "../(hooks)/useTeams";
 
 export default function Leaderboard() {
   const { teams } = useTeams();
