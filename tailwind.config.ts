@@ -10,6 +10,19 @@ export default {
   theme: {
     extend: {
       colors: {
+        "tall-poppy": {
+          "50": "#fdf3f3",
+          "100": "#fbe5e5",
+          "200": "#f9d0cf",
+          "300": "#f4aead",
+          "400": "#eb807e",
+          "500": "#de5755",
+          "600": "#ca3a38",
+          "700": "#b12f2d",
+          "800": "#8d2927",
+          "900": "#762726",
+          "950": "#3f1110",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
