@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-// import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "./theme-toggle";
 
 export default function NavBar(): React.ReactElement {
   return (
@@ -19,7 +19,7 @@ export default function NavBar(): React.ReactElement {
           <Link href="/teams">Teams</Link>
         </div>
       </div>
-      {/* <ThemeToggle /> */}
+      <ThemeToggle />
     </div>
   );
 }
