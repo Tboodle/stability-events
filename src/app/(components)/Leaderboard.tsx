@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useTeams } from "../(hooks)/useTeams";
 import { Card, CardContent } from "@/components/ui/card";
-import useSelectedTeam from "../(hooks)/useSelectedTeam";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useSelectedTeam } from "../(hooks)/useSelectedTeam";
 
 export default function Leaderboard() {
   const { teams } = useTeams();
@@ -40,9 +40,9 @@ export default function Leaderboard() {
                           src={"ledzeps.png"}
                           alt={team.name + " team image"}
                           fill
+                          sizes="100%"
                           unoptimized
-                          objectFit="contain"
-                          className="rounded-sm"
+                          className="rounded-sm object-contain"
                         />
                       </div>
                     )}

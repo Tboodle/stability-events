@@ -11,7 +11,8 @@ export default function NavBar(): React.ReactElement {
             src={"/banner.png"}
             alt="Stability Banner for Funzip"
             fill
-            objectFit="contain"
+            sizes="100%"
+            className="object-contain"
           />
         </div>
         <div className="flex ml-8 gap-4 items-center">

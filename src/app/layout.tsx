@@ -35,8 +35,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          {children}
+            <NavBar />
+            {children}
         </ThemeProvider>
         {/* <NavBar />
         <div id="main" className="p-2 bg-background text-foreground">

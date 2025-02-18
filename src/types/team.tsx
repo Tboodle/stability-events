@@ -6,4 +6,7 @@ export type Team = {
   event: string;
   members: string[];
   imgSrc: string;
+  tileProgress: TileProgress[];
 };
+
+type TileProgress = { tile: number; progress: number };

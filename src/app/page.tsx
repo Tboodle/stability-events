@@ -1,11 +1,14 @@
 "use client";
 
+import { SelectedTeamProvider } from "./(hooks)/useSelectedTeam";
 import HomePageContent from "./HomePageContent";
 
 export default function HomePage() {
   return (
     <>
-      <HomePageContent/>
+      <SelectedTeamProvider>
+        <HomePageContent />
+      </SelectedTeamProvider>
     </>
   );
 }

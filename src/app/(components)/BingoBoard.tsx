@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import useSelectedTeam from "../(hooks)/useSelectedTeam";
 import { Team } from "@/types/team";
 import { Tile } from "@/types/tile";
 import { useBingoBoard } from "../(hooks)/useBingoBoard";
 import { cn } from "@/lib/utils";
+import { useSelectedTeam } from "../(hooks)/useSelectedTeam";
 
 function getFileNameForTile(tile: number): string {
   if (tile === 1 || tile === 6) {
@@ -26,27 +26,29 @@ function getMedalSrcForSelectedTeam(
   team: Team,
   tile: Tile
 ): string | undefined {
-  // const progress = tile.progress.find(
-  //   (progress) => progress.teamId === team.id
-  // )?.progress;
-  const progress = 0;
+  const progress = team.tileProgress.find(
+    (progress) => progress.tile === tile.tile
+  )?.progress;
+
+  console.log(team.name, progress, tile.name);
 
   if (!progress) return undefined;
 
   if (progress === 1 || progress === 2 || progress == 4) {
-    return "bronze_medal.png";
+    return "/bronze_medal.png";
   }
 
   if (progress === 3 || progress === 5 || progress === 6) {
-    return "silver_medal.png";
+    return "/silver_medal.png";
   }
 
-  return "gold_medal.png";
+  return "/gold_medal.png";
 }
 
 export default function BingoBoard() {
   const { tiles } = useBingoBoard();
   const { selectedTeam } = useSelectedTeam();
+  console.log(selectedTeam);
 
   return (
     <div className="w-full md:w-[90%] lg:w-3/4 flex justify-center max-w-[900px]">
@@ -70,7 +72,9 @@ export default function BingoBoard() {
                   <Image
                     src={getFileNameForTile(tile.tile)}
                     fill
-                    objectFit="cover"
+                    priority
+                    sizes="100%"
+                    className="object-cover"
                     alt={`Tile ${tile.tile} image`}
                   />
                   {medalSrc && (
@@ -78,7 +82,8 @@ export default function BingoBoard() {
                       <Image
                         src={medalSrc}
                         fill
-                        objectFit="contain"
+                        sizes="100%"
+                        className="object-contain"
                         alt="Bronze Medal"
                       />
                     </div>
