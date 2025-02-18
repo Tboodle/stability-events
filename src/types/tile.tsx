@@ -1,9 +1,12 @@
 export type Tile = {
   id: string;
   name: string;
-  tasks: Task[];
-  progress: { teamId: string; progress: number }[];
-  imagePath: string;
+  task1: string;
+  task2: string;
+  task3: string;
+  tile: number;
+  doubleRow?: boolean;
+  doubleCol?: boolean;
 };
 
 export type Task = {

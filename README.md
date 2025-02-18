@@ -37,8 +37,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Tasks
 
-Tile Name,Task 1,Task 2,Task 3
-We’re All In This Together,3 splits with other teams,6 splits with other teams,9 splits with other teams
+name,number,task1,task2,task3
+We’re All In This Together,3 splits with other teams,13, 6 splits with other teams,9 splits with other teams
 Give Me Varlamore,Tome of Earth OR Dragon Hunter Wand,150 Hunter Rumours,Tooth or Loop Half of Key (moon)
 Tirannwn Trouble!,2x Crystal Armor Seeds OR Enhanced Crystal Weapon Seed,2x Zulrah Uniques,Zalcano Unique
 Into The Ring,750 Colosseum Points,3x Any Sunfire Pieces,Ralos OR Pet
