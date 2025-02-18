@@ -20,11 +20,12 @@ export function SelectedTeamProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Custom hook to use the context
 export const useSelectedTeam = (): SelectedTeamContext => {
   const context = useContext(SelectedTeamContext);
   if (!context) {
-    throw new Error("useMyContext must be used within a MyContextProvider");
+    throw new Error(
+      "useSelectedTeam must be used within a SelectedTeamProvider"
+    );
   }
   return context;
 };
