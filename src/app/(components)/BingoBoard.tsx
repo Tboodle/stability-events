@@ -78,7 +78,31 @@ export default function BingoBoard() {
                     alt={`Tile ${tile.tile} image`}
                   />
                   {medalSrc && (
-                    <div className="absolute bottom-0 left-0 h-1/2 w-1/2">
+                    <div
+                      className={cn(
+                        "absolute bottom-0 left-0 aspect-square",
+                        tile.doubleRow && "h-1/4",
+                        tile.doubleCol && "w-1/4",
+                        !tile.doubleCol && !tile.doubleRow && "h-1/2"
+                      )}
+                    >
+                      <Image
+                        src={medalSrc}
+                        fill
+                        sizes="100%"
+                        className="object-contain"
+                        alt="Bronze Medal"
+                      />
+                    </div>
+                  )}
+                  {medalSrc && (tile.doubleCol || tile.doubleRow) && (
+                    <div
+                      className={cn(
+                        "absolute aspect-square",
+                        tile.doubleRow && "h-1/4 bottom-[50%] left-0",
+                        tile.doubleCol && "w-1/4 bottom-0 left-[50%]"
+                      )}
+                    >
                       <Image
                         src={medalSrc}
                         fill
