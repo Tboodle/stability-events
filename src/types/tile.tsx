@@ -2,7 +2,7 @@ export type Tile = {
   id: string;
   name: string;
   tasks: Task[];
-  progress: { teamId: string; progress: TileProgress }[];
+  progress: { teamId: string; progress: number }[];
   imagePath: string;
 };
 
@@ -11,5 +11,3 @@ export type Task = {
   name: string;
   description: string;
 };
-
-export type TileProgress = "empty" | "bronze" | "silver" | "gold";

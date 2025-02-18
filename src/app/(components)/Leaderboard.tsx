@@ -20,11 +20,16 @@ export default function Leaderboard() {
               <Button
                 variant="ghost"
                 className={cn(
-                  "flex justify-between text-3xl gap-12 text-left items-center w-full h-fit",
-                  selectedTeam?.id === team.id && "bg-accent"
+                  "flex justify-between text-3xl gap-12 text-left items-center w-full h-fit p-4",
+                  selectedTeam?.id === team.id &&
+                    "bg-accent border border-foreground"
                 )}
                 key={team.name}
-                onClick={() => setSelectedTeam(team)}
+                onClick={() =>
+                  selectedTeam === team
+                    ? setSelectedTeam(undefined)
+                    : setSelectedTeam(team)
+                }
               >
                 <div className="flex gap-4 items-center">
                   <div>{index + 1}</div>
