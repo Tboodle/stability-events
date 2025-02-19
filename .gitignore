@@ -14,6 +14,8 @@
 # testing
 /coverage
 
+creds.json
+update.py
 
 # next.js
 /.next/

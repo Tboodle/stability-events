@@ -9,4 +9,4 @@ export type Team = {
   tileProgress: TileProgress[];
 };
 
-type TileProgress = { tile: number; progress: number };
+type TileProgress = { tile: number; task1?: number; task2?: number; task3?: number };

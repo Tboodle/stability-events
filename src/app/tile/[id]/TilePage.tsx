@@ -5,10 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTile } from "@/app/(hooks)/useTile";
 import { getFileNameForTile } from "@/utils/tileUtils";
-import { ArrowLeft, CheckCircle, CircleX } from "lucide-react";
+import { ArrowLeft, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TabsContent } from "@radix-ui/react-tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tile } from "@/types/tile";
 import { useTeams } from "@/app/(hooks)/useTeams";
 import { Team } from "@/types/team";
@@ -22,48 +21,61 @@ function getTaskTabContent(
 ): React.ReactElement {
   const teamsWithProgress = teams
     .map((team) => {
-      const progress = team.tileProgress.find(
-        (tile) => tile.tile === tile.tile
-      )?.progress;
+      const progress =
+        team.tileProgress.find((teamTile) => teamTile.tile === tile.tile)?.[
+          task
+        ] || 0;
 
       return { team: team, progress };
     })
     .sort((teamA, teamB) => teamA.team.name.localeCompare(teamB.team.name));
+  console.log(teamsWithProgress);
   return (
     <Card>
-      <CardTitle className="text-3xl p-8 font-normal">{tile[task]}</CardTitle>
+      <CardTitle className="text-3xl p-8 font-normal">
+        {tile[task].description}
+      </CardTitle>
       <CardContent className="flex flex-col">
-        {teamsWithProgress.map((team) => (
-          <div key={team.team.id} className="mb-8 flex items-center">
-            <div className="flex gap-4 w-1/2">
-              {true && (
-                <div className="relative h-20 w-20">
-                  <Image
-                    src={"/ledzeps.png"}
-                    alt={team.team.name + " team image"}
-                    fill
-                    sizes="100%"
-                    unoptimized
-                    className="rounded-sm object-contain"
-                  />
+        {teamsWithProgress.map((team) => {
+          console.log(team.progress);
+          return (
+            <div key={team.team.id} className="mb-8 flex items-center">
+              <div className="flex gap-4 w-[30rem]">
+                {true && (
+                  <div className="relative h-20 w-20">
+                    <Image
+                      src={"/ledzeps.png"}
+                      alt={team.team.name + " team image"}
+                      fill
+                      sizes="100%"
+                      unoptimized
+                      className="rounded-sm object-contain"
+                    />
+                  </div>
+                )}
+                <div className="flex items-center text-2xl">
+                  {team.team.name}
                 </div>
-              )}
-              <div className="flex items-center text-2xl">{team.team.name}</div>
+              </div>
+              <Progress
+                value={(team.progress / tile[task].target) * 100}
+                className={cn(
+                  "w-full mr-8",
+                  team.progress >= tile[task].target && "[&>div]:bg-blue-500"
+                )}
+              />
+              <div className="text-foreground/40 text-2xl text-nowrap w-[10rem] text-end">
+                {team.progress >= tile[task].target ? (
+                  <CheckCircle className="w-16 h-16 text-blue-800 ml-auto" />
+                ) : (
+                  <div>
+                    {team.progress} / {tile[task].target || 1}
+                  </div>
+                )}
+              </div>
             </div>
-            <Progress
-              value={32}
-              className={cn(
-                "w-full mr-4",
-                team.progress === 8 && "[&>div]:bg-blue-500"
-              )}
-            />
-            {team.progress === 8 ? (
-              <CheckCircle className="w-24 h-24 text-blue-800" />
-            ) : (
-              <CircleX className="w-24 h-24 text-primary" />
-            )}
-          </div>
-        ))}
+          );
+        })}
       </CardContent>
     </Card>
   );
@@ -99,15 +111,15 @@ export function TilePage({ id }: { id: string }): React.ReactElement {
                 <CardContent className="flex flex-col p-8 text-foreground">
                   <div className="text-xl mb-8 flex gap-4">
                     <div className="text-foreground/60 min-w-fit">Task 1:</div>{" "}
-                    <div>{tile.task1}</div>
+                    <div>{tile.task1.description}</div>
                   </div>
                   <div className="text-xl mb-8 flex gap-4">
                     <div className="text-foreground/60 min-w-fit">Task 2:</div>{" "}
-                    <div>{tile.task2}</div>
+                    <div>{tile.task2.description}</div>
                   </div>
                   <div className="text-xl flex gap-4">
                     <div className="text-foreground/60 min-w-fit">Task 3:</div>{" "}
-                    <div>{tile.task3}</div>
+                    <div>{tile.task3.description}</div>
                   </div>
                 </CardContent>
               </Card>
