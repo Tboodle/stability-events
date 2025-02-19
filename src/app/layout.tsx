@@ -31,12 +31,12 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-            <NavBar />
-            {children}
+          <NavBar />
+          {children}
         </ThemeProvider>
         {/* <NavBar />
         <div id="main" className="p-2 bg-background text-foreground">

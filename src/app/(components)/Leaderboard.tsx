@@ -12,7 +12,10 @@ export default function Leaderboard() {
   const { selectedTeam, setSelectedTeam } = useSelectedTeam();
   return (
     <div className="flex h-full w-full flex-col max-w-[30rem]">
-      <span className="text-4xl text-foreground mb-2">Leaderboard</span>
+      <span className="text-3xl text-foreground">Leaderboard</span>
+      <span className="text-xl text-foreground/40 mb-2">
+        Click a team to see their progress
+      </span>
       <Card className="flex w-full h-full flex-col gap-4 rounded">
         <CardContent className="py-4 [&>*:not(:last-child)]:mb-4">
           {teams ? (
