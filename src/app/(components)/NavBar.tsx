@@ -16,8 +16,8 @@ export default function NavBar(): React.ReactElement {
           />
         </div>
         <div className="flex ml-8 gap-4 items-center">
-          <Link href="/">Board</Link>
-          <Link href="/teams">Teams</Link>
+          {/* <Link href="/">Board</Link>
+          <Link href="/teams">Teams</Link> */}
         </div>
       </div>
       <ThemeToggle />

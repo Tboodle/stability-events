@@ -129,7 +129,7 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
             />
           </div>
         )}
-        {tile.doubleRow && (
+        {/* {tile.doubleRow && (
           <div
             className="absolute top-1/2 left-0 w-full h-[6px] border-0 bg-transparent -translate-y-1/2"
             style={{
@@ -146,7 +146,7 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
                 "repeating-linear-gradient(0deg, #6b21a8 0px, #6b21a8 6px, transparent 6px, transparent 12px)",
             }}
           />
-        )}
+        )} */}
       </CardContent>
     </Card>
   );
