@@ -53,7 +53,7 @@ export default function BingoBoard() {
   return (
     <div className="w-full md:w-[90%] lg:w-3/4 flex justify-center max-w-[900px]">
       {tiles ? (
-        <div className="grid grid-cols-5 grid-auto-rows-[1fr] gap-1 p-1 bg-[#5E17EB] rounded-md w-full">
+        <div className="grid grid-cols-5 grid-auto-rows-[1fr] gap-1 p-1 bg-purple-800 rounded-md w-full">
           {tiles.map((tile) => {
             const medalSrc = selectedTeam
               ? getMedalSrcForSelectedTeam(selectedTeam, tile)
@@ -62,7 +62,7 @@ export default function BingoBoard() {
               <Card
                 key={tile.id}
                 className={cn(
-                  "rounded-md border border-[#5E17EB] relative w-full h-full",
+                  "rounded-md border border-purple-800 relative w-full h-full",
                   tile.doubleCol && "col-span-2",
                   tile.doubleRow && "row-span-2",
                   !tile.doubleCol && !tile.doubleRow && "aspect-square"
@@ -90,7 +90,7 @@ export default function BingoBoard() {
                         src={medalSrc}
                         fill
                         sizes="100%"
-                        className="object-contain"
+                        className="object-contain drop-shadow-[5px_5px_5px_rgba(0,0,0,0.5)]"
                         alt="Bronze Medal"
                       />
                     </div>
@@ -99,18 +99,38 @@ export default function BingoBoard() {
                     <div
                       className={cn(
                         "absolute aspect-square",
-                        tile.doubleRow && "h-1/4 bottom-[50%] left-0",
-                        tile.doubleCol && "w-1/4 bottom-0 left-[50%]"
+                        tile.doubleRow &&
+                          "h-1/4 bottom-[50%] -translate-y-1 left-0",
+                        tile.doubleCol &&
+                          "w-1/4 bottom-0 left-[50%] translate-x-1"
                       )}
                     >
                       <Image
                         src={medalSrc}
                         fill
                         sizes="100%"
-                        className="object-contain"
+                        className="object-contain drop-shadow-[5px_5px_5px_rgba(0,0,0,0.5)]"
                         alt="Bronze Medal"
                       />
                     </div>
+                  )}
+                  {tile.doubleRow && (
+                    <div
+                      className="absolute top-1/2 left-0 w-full h-[6px] border-0 bg-transparent -translate-y-1/2"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(90deg, #6b21a8 0px, #6b21a8 6px, transparent 6px, transparent 12px)",
+                      }}
+                    />
+                  )}
+                  {tile.doubleCol && (
+                    <div
+                      className="absolute top-0 left-1/2 h-full w-[6px] border-0 bg-transparent -translate-x-1/2"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(0deg, #6b21a8 0px, #6b21a8 6px, transparent 6px, transparent 12px)",
+                      }}
+                    />
                   )}
                 </CardContent>
               </Card>
