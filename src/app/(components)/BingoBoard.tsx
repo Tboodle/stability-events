@@ -71,17 +71,19 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
         !tile.doubleCol && !tile.doubleRow && "aspect-square"
       )}
     >
-      <CardContent className={cn("relative w-full h-full")}>
+      <CardContent
+        className={cn(
+          "relative w-full h-full",
+          "transition-transform duration-300 ease-in-out cursor-pointer transform hover:z-50 shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.75)] hover:rounded-sm"
+        )}
+      >
         <Link href={`/tile/${tile.id}`}>
           <Image
             src={getFileNameForTile(tile.tile)}
             fill
             priority
             sizes="100%"
-            className={cn(
-              "object-cover",
-              "transition-transform duration-300 ease-in-out cursor-pointer transform hover:z-50 shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.75)] hover:rounded-sm"
-            )}
+            className="object-cover"
             alt={`Tile ${tile.tile} image`}
           />
         </Link>

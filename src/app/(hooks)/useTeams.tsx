@@ -24,7 +24,7 @@ export function useTeams(): {
             id: doc.id,
           };
         }) as Team[];
-        setTeams(teamsData);
+        setTeams(teamsData.sort((teamA, teamB) => teamB.points - teamA.points));
         setLoading(false);
       },
       (err) => {
