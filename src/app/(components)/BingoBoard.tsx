@@ -5,6 +5,7 @@ import { Tile } from "@/types/tile";
 import { useBingoBoard } from "../(hooks)/useBingoBoard";
 import { cn } from "@/lib/utils";
 import { useSelectedTeam } from "../(hooks)/useSelectedTeam";
+import Link from "next/link";
 
 function getFileNameForTile(tile: number): string {
   if (tile === 1 || tile === 6) {
@@ -86,17 +87,19 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
       )}
     >
       <CardContent className={cn("relative w-full h-full")}>
-        <Image
-          src={getFileNameForTile(tile.tile)}
-          fill
-          priority
-          sizes="100%"
-          className={cn(
-            "object-cover",
-            "transition-transform duration-300 ease-in-out cursor-pointer transform hover:z-50 shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.75)] hover:rounded-sm"
-          )}
-          alt={`Tile ${tile.tile} image`}
-        />
+        <Link href={`/tile/${tile.id}`}>
+          <Image
+            src={getFileNameForTile(tile.tile)}
+            fill
+            priority
+            sizes="100%"
+            className={cn(
+              "object-cover",
+              "transition-transform duration-300 ease-in-out cursor-pointer transform hover:z-50 shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.75)] hover:rounded-sm"
+            )}
+            alt={`Tile ${tile.tile} image`}
+          />
+        </Link>
         {medalSrc && (
           <div
             className={cn(
