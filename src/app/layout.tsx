@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./_components/theme.provider";
 import NavBar from "./_components/NavBar";
+import { DotPattern } from "@/components/magicui/dot-pattern";
+import { cn } from "@/lib/utils";
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-background w-full`}
       >
+        <FlickeringGrid
+          className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(4500px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={12}
+          color="#A72A2D"
+          maxOpacity={0.4}
+          flickerChance={0.2}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
