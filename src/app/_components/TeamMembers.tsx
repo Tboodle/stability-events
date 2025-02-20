@@ -5,8 +5,6 @@ import { cn } from "@/lib/utils";
 export default function TeamMembers(): React.ReactElement {
   const { selectedTeam } = useSelectedTeam();
 
-  const captain = selectedTeam?.members[0];
-
   return (
     <div
       className={cn(
