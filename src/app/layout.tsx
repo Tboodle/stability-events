@@ -31,11 +31,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-background w-full`}
       >
         <FlickeringGrid
-          className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(4500px_circle_at_center,white,transparent)]"
+          className="absolute inset-0 -z-10 size-full [mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]"
           squareSize={4}
           gridGap={12}
-          color="#A72A2D"
-          maxOpacity={0.4}
+          color="#A52D2A"
+          maxOpacity={0.3}
           flickerChance={0.2}
         />
         <ThemeProvider

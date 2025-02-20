@@ -62,7 +62,7 @@ function getTaskTabContent(
                 team.progress >= team.target && "[&>div]:bg-blue-500"
               )}
             />
-            <div className="text-foreground/40 text-2xl text-nowrap w-[10rem] text-end">
+            <div className="text-muted-foreground text-2xl text-nowrap w-[10rem] text-end">
               {team.progress >= team.target ? (
                 <Check className="w-16 h-16 text-blue-800 ml-auto" />
               ) : (
@@ -109,15 +109,21 @@ export function TilePage({ id }: { id: string }): React.ReactElement {
               <Card className="w-full h-full">
                 <CardContent className="flex flex-col p-8 text-foreground">
                   <div className="text-xl mb-8 flex gap-4">
-                    <div className="text-foreground/60 min-w-fit">Task 1:</div>{" "}
+                    <div className="text-muted-foreground min-w-fit">
+                      Task 1:
+                    </div>{" "}
                     <div>{tile.task1.description}</div>
                   </div>
                   <div className="text-xl mb-8 flex gap-4">
-                    <div className="text-foreground/60 min-w-fit">Task 2:</div>{" "}
+                    <div className="text-muted-foreground min-w-fit">
+                      Task 2:
+                    </div>{" "}
                     <div>{tile.task2.description}</div>
                   </div>
                   <div className="text-xl flex gap-4">
-                    <div className="text-foreground/60 min-w-fit">Task 3:</div>{" "}
+                    <div className="text-muted-foreground min-w-fit">
+                      Task 3:
+                    </div>{" "}
                     <div>{tile.task3.description}</div>
                   </div>
                 </CardContent>

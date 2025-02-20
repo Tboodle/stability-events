@@ -66,7 +66,7 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
     <Card
       key={tile.id}
       className={cn(
-        "rounded-md border border-purple-800 border-opacity-100 relative w-full h-full",
+        "rounded-sm border border-purple-800 bg-purple-800 shadow-none relative w-full h-full",
         tile.doubleCol && "col-span-2",
         tile.doubleRow && "row-span-2",
         !tile.doubleCol && !tile.doubleRow && "aspect-square"

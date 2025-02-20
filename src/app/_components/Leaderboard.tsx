@@ -13,7 +13,7 @@ export default function Leaderboard() {
   return (
     <div className="flex h-full w-full flex-col max-w-[30rem]">
       <span className="text-3xl text-foreground">Leaderboard</span>
-      <span className="text-xl text-foreground/40 mb-2">
+      <span className="text-xl text-muted-foreground mb-2">
         Click a team to see their progress
       </span>
       <Card className="flex w-full h-full flex-col gap-4 rounded">

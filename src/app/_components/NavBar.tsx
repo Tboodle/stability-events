@@ -5,7 +5,7 @@ export default function NavBar(): React.ReactElement {
   return (
     <div className="flex w-full h-20 p-2 justify-between">
       <div className="flex items-center h-full w-full">
-        <div className="flex w-36 relative h-full p-4 bg-background rounded-lg">
+        <div className="flex w-36 relative h-full bg-background rounded-lg">
           <Image
             src={"/banner.png"}
             alt="Stability Banner for Funzip"
