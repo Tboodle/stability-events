@@ -12,20 +12,22 @@ function getMedalSrcForSelectedTeam(
   team: Team,
   tile: Tile
 ): string | undefined {
-  // const progress = team.tileProgress.find(
-  //   (progress) => progress.tile === tile.tile
-  // )?;
-  const progress = 5;
+  const tileProgress = team.tileProgress.find(
+    (progress) => progress.tile === tile.tile
+  );
 
-  console.log(team.name, progress, tile.name);
+  const medalScore =
+    (tileProgress?.task1.progress === tileProgress?.task1.target ? 1 : 0) +
+    (tileProgress?.task2.progress === tileProgress?.task2.target ? 1 : 0) +
+    (tileProgress?.task3.progress === tileProgress?.task3.target ? 1 : 0);
 
-  if (!progress) return undefined;
+  if (!medalScore) return undefined;
 
-  if (progress === 1 || progress === 2 || progress == 4) {
+  if (medalScore === 1) {
     return "/bronze_medal.png";
   }
 
-  if (progress === 3 || progress === 5 || progress === 6) {
+  if (medalScore === 2) {
     return "/silver_medal.png";
   }
 
