@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./_components/theme.provider";
 import NavBar from "./_components/NavBar";
-import { DotPattern } from "@/components/magicui/dot-pattern";
-import { cn } from "@/lib/utils";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 const geistSans = Geist({
