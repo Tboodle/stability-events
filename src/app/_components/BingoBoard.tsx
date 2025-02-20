@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useSelectedTeam } from "../_hooks/useSelectedTeam";
 import Link from "next/link";
 import { getFileNameForTile } from "@/utils/tileUtils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function getMedalSrcForSelectedTeam(
   team: Team,
@@ -35,23 +36,20 @@ function getMedalSrcForSelectedTeam(
 }
 
 export default function BingoBoard() {
-  const { tiles } = useBingoBoard();
+  const { tiles, loading } = useBingoBoard();
 
   return (
     <div className="w-full md:w-[90%] lg:w-3/4 flex justify-center max-w-[900px]">
-      {tiles ? (
+      {!loading ? (
         <div className="grid grid-cols-5 grid-auto-rows-[1fr] gap-1 p-1 bg-purple-800 rounded-md w-full">
           {tiles.map((tile) => {
             return <BingoCard key={tile.id} tile={tile} />;
           })}
         </div>
       ) : (
-        <div className="grid grid-cols-5 gap-1 p-2 bg-[#5E17EB] rounded-md">
+        <div className="grid grid-cols-5 grid-auto-rows-[1fr] gap-1 p-1 bg-purple-800 rounded-md w-full">
           {Array.from({ length: 25 }).map((_, index) => (
-            <Card
-              key={index}
-              className="rounded-md border border-[#5E17EB]"
-            ></Card>
+            <Skeleton key={index} className="aspect-square bg-background" />
           ))}
         </div>
       )}
