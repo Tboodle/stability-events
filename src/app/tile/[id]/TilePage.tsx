@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTile } from "@/app/(hooks)/useTile";
 import { getFileNameForTile } from "@/utils/tileUtils";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, Check, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tile } from "@/types/tile";
@@ -21,61 +21,58 @@ function getTaskTabContent(
 ): React.ReactElement {
   const teamsWithProgress = teams
     .map((team) => {
-      const progress =
-        team.tileProgress.find((teamTile) => teamTile.tile === tile.tile)?.[
-          task
-        ] || 0;
+      const tileProgress = team.tileProgress.find(
+        (teamTile) => teamTile.tile === tile.tile
+      )![task];
 
-      return { team: team, progress };
+      return {
+        team: team,
+        progress: tileProgress.progress,
+        target: tileProgress.target,
+      };
     })
     .sort((teamA, teamB) => teamA.team.name.localeCompare(teamB.team.name));
-  console.log(teamsWithProgress);
   return (
     <Card>
       <CardTitle className="text-3xl p-8 font-normal">
         {tile[task].description}
       </CardTitle>
       <CardContent className="flex flex-col">
-        {teamsWithProgress.map((team) => {
-          console.log(team.progress);
-          return (
-            <div key={team.team.id} className="mb-8 flex items-center">
-              <div className="flex gap-4 w-[30rem]">
-                {true && (
-                  <div className="relative h-20 w-20">
-                    <Image
-                      src={"/ledzeps.png"}
-                      alt={team.team.name + " team image"}
-                      fill
-                      sizes="100%"
-                      unoptimized
-                      className="rounded-sm object-contain"
-                    />
-                  </div>
-                )}
-                <div className="flex items-center text-2xl">
-                  {team.team.name}
+        {teamsWithProgress.map((team) => (
+          <div key={team.team.id} className="mb-8 flex items-center">
+            <div className="flex gap-4 w-[30rem]">
+              {true && (
+                <div className="relative h-20 w-20">
+                  <Image
+                    src={"/ledzeps.png"}
+                    alt={team.team.name + " team image"}
+                    fill
+                    sizes="100%"
+                    unoptimized
+                    className="rounded-sm object-contain"
+                  />
                 </div>
-              </div>
-              <Progress
-                value={(team.progress / tile[task].target) * 100}
-                className={cn(
-                  "w-full mr-8",
-                  team.progress >= tile[task].target && "[&>div]:bg-blue-500"
-                )}
-              />
-              <div className="text-foreground/40 text-2xl text-nowrap w-[10rem] text-end">
-                {team.progress >= tile[task].target ? (
-                  <CheckCircle className="w-16 h-16 text-blue-800 ml-auto" />
-                ) : (
-                  <div>
-                    {team.progress} / {tile[task].target || 1}
-                  </div>
-                )}
-              </div>
+              )}
+              <div className="flex items-center text-2xl">{team.team.name}</div>
             </div>
-          );
-        })}
+            <Progress
+              value={(team.progress / team.target) * 100}
+              className={cn(
+                "w-full mr-8",
+                team.progress >= team.target && "[&>div]:bg-blue-500"
+              )}
+            />
+            <div className="text-foreground/40 text-2xl text-nowrap w-[10rem] text-end">
+              {team.progress >= team.target ? (
+                <Check className="w-16 h-16 text-blue-800 ml-auto" />
+              ) : (
+                <div>
+                  {team.progress} / {team.target}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
       </CardContent>
     </Card>
   );
@@ -84,6 +81,8 @@ function getTaskTabContent(
 export function TilePage({ id }: { id: string }): React.ReactElement {
   const { tile } = useTile(id);
   const { teams } = useTeams();
+
+  console.log(tile, teams);
 
   return (
     <div className="flex flex-col h-full w-full">

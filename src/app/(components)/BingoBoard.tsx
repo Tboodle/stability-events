@@ -12,9 +12,10 @@ function getMedalSrcForSelectedTeam(
   team: Team,
   tile: Tile
 ): string | undefined {
-  const progress = team.tileProgress.find(
-    (progress) => progress.tile === tile.tile
-  )?.progress;
+  // const progress = team.tileProgress.find(
+  //   (progress) => progress.tile === tile.tile
+  // )?;
+  const progress = 5;
 
   console.log(team.name, progress, tile.name);
 
