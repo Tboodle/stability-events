@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Team } from "@/types/team";
 import { Tile } from "@/types/tile";
-import { useBingoBoard } from "../(hooks)/useBingoBoard";
+import { useBingoBoard } from "../_hooks/useBingoBoard";
 import { cn } from "@/lib/utils";
-import { useSelectedTeam } from "../(hooks)/useSelectedTeam";
+import { useSelectedTeam } from "../_hooks/useSelectedTeam";
 import Link from "next/link";
 import { getFileNameForTile } from "@/utils/tileUtils";
 

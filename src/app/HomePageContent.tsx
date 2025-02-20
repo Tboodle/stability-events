@@ -1,7 +1,7 @@
 "use client";
 
-import BingoBoard from "./(components)/BingoBoard";
-import Leaderboard from "./(components)/Leaderboard";
+import BingoBoard from "./_components/BingoBoard";
+import Leaderboard from "./_components/Leaderboard";
 
 export default function HomePageContent() {
   return (

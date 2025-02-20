@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useTeams } from "../(hooks)/useTeams";
+import { useTeams } from "../_hooks/useTeams";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useSelectedTeam } from "../(hooks)/useSelectedTeam";
+import { useSelectedTeam } from "../_hooks/useSelectedTeam";
 
 export default function Leaderboard() {
   const { teams } = useTeams();
