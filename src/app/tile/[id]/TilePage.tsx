@@ -34,8 +34,9 @@ function getTaskTabContent(
     .sort((teamA, teamB) => teamA.team.name.localeCompare(teamB.team.name));
   return (
     <Card>
-      <CardTitle className="text-3xl p-8 font-normal">
-        {tile[task].description}
+      <CardTitle className="text-3xl p-8 font-normal mb-4">
+        <span className="mr-4">Task:</span>
+        <span className="">{tile[task].description}</span>
       </CardTitle>
       <CardContent className="flex flex-col">
         {teamsWithProgress.map((team) => (
@@ -49,7 +50,7 @@ function getTaskTabContent(
                     fill
                     sizes="100%"
                     unoptimized
-                    className="rounded-sm object-contain"
+                    className="rounded-sm object-cover"
                   />
                 </div>
               )}
