@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTile } from "@/app/(hooks)/useTile";
 import { getFileNameForTile } from "@/utils/tileUtils";
-import { ArrowLeft, Check, CheckCircle } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tile } from "@/types/tile";
