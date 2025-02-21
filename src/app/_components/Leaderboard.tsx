@@ -40,7 +40,7 @@ export default function Leaderboard() {
                     {true && (
                       <div className="relative h-20 w-20">
                         <Image
-                          src={"ledzeps.png"}
+                          src={`/${team.captain.toLowerCase()}.png`}
                           alt={team.name + " team image"}
                           fill
                           sizes="100%"
