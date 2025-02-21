@@ -83,8 +83,6 @@ export function TilePage({ id }: { id: string }): React.ReactElement {
   const { tile } = useTile(id);
   const { teams } = useTeams();
 
-  console.log(tile, teams);
-
   return (
     <div className="flex flex-col h-full w-full">
       <Button asChild variant="outline" className="text-foreground mb-2 w-fit">

@@ -51,7 +51,7 @@ const parseTileName = (
 ): { tile: string; taskNumber: number | null } => {
   const parts = tileName.trim().split(" ");
   const taskNumber = parseInt(parts.pop() || "", 10);
-  const tile = parts[0];
+  const tile = parts.join(" ");
   return { tile, taskNumber: taskNumber || null };
 };
 
@@ -83,10 +83,8 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Data!A9:E434",
+      range: "Data!A9:E84",
     });
-
-    console.log(response.data);
 
     const rows = response.data.values;
     if (!rows || rows.length < 2) {
@@ -127,20 +125,23 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
           (tileProgress) => tileProgress.tile === tileNumber
         );
         let tile = teams[teamName].tileProgress[tileIndex];
-        if (!tile) {
+        if (tileIndex < 0) {
           tile = {
             tile: tileNumber,
             task1: { complete: false },
             task2: { complete: false },
             task3: { complete: false },
           };
+          teams[teamName].tileProgress.push(tile);
         }
 
         // Update task completion
         const taskKey = `task${taskNumber}` as keyof TileProgress;
         tile[taskKey] = { complete: completed } as any;
 
-        teams[teamName].tileProgress[tileIndex] = tile;
+        teams[teamName].tileProgress[
+          tileIndex > 0 ? tileIndex : teams[teamName].tileProgress.length - 1
+        ] = tile;
       });
     });
 
