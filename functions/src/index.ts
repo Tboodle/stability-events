@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { google } from "googleapis";
+import { firestore } from "firebase-admin";
 
 // Initialize Firebase Admin SDK (only once)
 admin.initializeApp();
@@ -151,11 +152,48 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
       tileProgress: team.tileProgress.sort((a, b) => a.tile - b.tile),
     }));
 
-    console.log(JSON.stringify(resultData));
     return resultData;
   } catch (error) {
     console.error("Error fetching Google Sheets data", error);
     return [];
+  }
+};
+
+const updateFirestoreTeams = async (resultData: TeamData[]) => {
+  try {
+    const db = firestore();
+    const teamsCollection = db.collection("teams");
+
+    // Fetch all team documents from Firestore
+    const teamsSnapshot = await teamsCollection.get();
+
+    // Create a mapping of captains to their document IDs
+    const teamDocs: { [captain: string]: string } = {};
+    teamsSnapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.captain) {
+        teamDocs[data.captain] = doc.id;
+      }
+    });
+
+    // Iterate over resultData and update the corresponding Firestore documents
+    const updatePromises = resultData.map(async (team) => {
+      const docId = teamDocs[team.team]; // Find the matching Firestore document
+      if (!docId) {
+        console.warn(`No Firestore document found for team: ${team.team}`);
+        return;
+      }
+
+      await teamsCollection
+        .doc(docId)
+        .update({ tileProgress: team.tileProgress });
+      console.log(`Updated Firestore document for team: ${team.team}`);
+    });
+
+    await Promise.all(updatePromises);
+    console.log("All teams updated successfully in Firestore.");
+  } catch (error) {
+    console.error("Error updating Firestore teams:", error);
   }
 };
 
@@ -169,7 +207,8 @@ export const onDropAdded = functions
     });
 
     try {
-      await fetchAndTransformData();
+      const results = await fetchAndTransformData();
+      updateFirestoreTeams(results);
     } catch (error) {
       functions.logger.error("Failed to process Google Sheets data", { error });
     }
