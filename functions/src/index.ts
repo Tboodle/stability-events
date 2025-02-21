@@ -45,6 +45,7 @@ interface TileProgress {
 interface TeamData {
   team: string;
   tileProgress: TileProgress[];
+  points: number;
 }
 
 const parseTileName = (
@@ -94,7 +95,7 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
 
     const pointRows = pointsResponse.data.values;
     const points: { [team: string]: number } = {};
-    pointRows?.slice(1).forEach((row) => {
+    pointRows?.forEach((row) => {
       const team = (row[0] as string).replace("Team ", "");
       points[team] = row[2] || 0;
     });
@@ -199,7 +200,7 @@ const updateFirestoreTeams = async (resultData: TeamData[]) => {
 
       await teamsCollection
         .doc(docId)
-        .update({ tileProgress: team.tileProgress });
+        .update({ tileProgress: team.tileProgress, points: team.points });
       console.log(`Updated Firestore document for team: ${team.team}`);
     });
 
