@@ -7,9 +7,7 @@ admin.initializeApp();
 
 async function readGoogleSheet() {
   // Read credentials from an environment variable
-  const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS
-    ? JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS)
-    : null;
+  const credentials = process.env.CREDS ? JSON.parse(process.env.CREDS) : null;
 
   if (!credentials) {
     throw new Error(
