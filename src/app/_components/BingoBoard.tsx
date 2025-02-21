@@ -18,9 +18,9 @@ function getMedalSrcForSelectedTeam(
   );
 
   const medalScore =
-    (tileProgress?.task1.progress === tileProgress?.task1.target ? 1 : 0) +
-    (tileProgress?.task2.progress === tileProgress?.task2.target ? 1 : 0) +
-    (tileProgress?.task3.progress === tileProgress?.task3.target ? 1 : 0);
+    (tileProgress?.task1.complete ? 1 : 0) +
+    (tileProgress?.task2.complete ? 1 : 0) +
+    (tileProgress?.task3.complete ? 1 : 0);
 
   if (!medalScore) return undefined;
 
@@ -37,6 +37,7 @@ function getMedalSrcForSelectedTeam(
 
 export default function BingoBoard() {
   const { tiles, loading } = useBingoBoard();
+  console.log(tiles);
 
   return (
     <div className="w-full md:w-[90%] lg:w-3/4 flex justify-center max-w-[900px]">

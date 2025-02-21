@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTile } from "@/app/_hooks/useTile";
 import { getFileNameForTile } from "@/utils/tileUtils";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, X } from "lucide-react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tile } from "@/types/tile";
@@ -27,7 +27,7 @@ function getTaskTabContent(
 
       return {
         team: team,
-        progress: tileProgress.progress,
+        complete: tileProgress.complete,
         target: tileProgress.target,
       };
     })
@@ -57,19 +57,17 @@ function getTaskTabContent(
               <div className="flex items-center text-2xl">{team.team.name}</div>
             </div>
             <Progress
-              value={(team.progress / team.target) * 100}
+              value={team.complete ? 100 : 0}
               className={cn(
                 "w-full mr-8",
-                team.progress >= team.target && "[&>div]:bg-blue-500"
+                team.complete && "[&>div]:bg-blue-500"
               )}
             />
             <div className="text-muted-foreground text-2xl text-nowrap w-[10rem] text-end">
-              {team.progress >= team.target ? (
+              {team.complete ? (
                 <Check className="w-16 h-16 text-blue-800 ml-auto" />
               ) : (
-                <div>
-                  {team.progress} / {team.target}
-                </div>
+                <X className="w-16 h-16 text-red-800 ml-auto" />
               )}
             </div>
           </div>

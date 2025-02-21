@@ -1,0 +1,66 @@
+We're All In This Together 1 B422 >= 3 
+We're All In This Together 2 B422 >= 6 
+We're All In This Together 3  B422 >= 9
+Give Me Varlamore 1  B423 + B424 > 0
+Give Me Varlamore 2 B425 >= 150 
+Give Me Varlamore 3 B426 + B427 > 0 
+Tirannwn Trouble 1 B276 + b277 * 2 >= 2 
+Tirannwn Trouble 2 SUM({B92:B95, B97:B100}) >= 2 
+Tirannwn Trouble 3 SUM(B88:B91) > 0 
+Into The Ring 1 X1 >= 750 
+Into The Ring 2 SUM(B371:B373) >= 3 
+Into The Ring 3 B370 + B375 > 0 
+Light the Fire 1 O1 >= 700 
+Light the Fire 2 COUNTIF(B429:B430, ">0") = 2 
+Light the Fire 3  SUM(B344:B345) >= 2
+POG Raider 1 B174 + B175 > 0 
+POG Raider 2  B171 + B172 + B173 > 0
+POG Raider 3  SUM(B176:B177)>=75
+Ban the Wildy 1  SUM(B213:B215) > 0
+Ban the Wildy 2 SUM(B210:B212) > 0 
+Ban the Wildy 3 COUNTIF(B217:B219, ">0") >= 3 
+Bloodlust 1  B354 >= 2
+Bloodlust 2  B431 >= 2
+Bloodlust 3  COUNTIF(B399:B402, ">0") >= 3
+Ring Bling 1  B432 > 0
+Ring Bling 2  SUM(B124:B127) > 0
+Ring Bling 3  B433 >= 3
+Chambers of Xeric 1  B272 + B273 >= 2
+Chambers of Xeric 2 SUM(B265:B271, B274, B103:B105) >= 2 
+Chambers of Xeric 3 SUM(B103:B105, B265, B274) > 0 
+Theatre of Blood 1 B108 >= 3 
+Theatre of Blood 2  SUM(B109:B114,B101)>=2
+Theatre of Blood 3  B101 + B109 + B114 > 0
+Tombs of Amascut 1  B279 + B281 >= 2
+Tombs of Amascut 2 SUM(B280, B282:B285, B102)>=2 
+Tombs of Amascut 3  OR(OR(B285 > 0, B102>0), COUNTIF(B279:B284, ">0") >=6)
+Like a Boss 1 B428 >= 6 
+Like a Boss 2 B428 >= 12 
+Like a Boss 3 B428 >= 18
+What's Nex-t 1 SUM(B222:B227,B107)>=1 
+What's Nex-t 2 SUM(B222:B227,B107)>=2  
+What's Nex-t 3 SUM(B222:B227,B107)>=3  
+Phantom Ligmuh 1 B$340 >= 1 
+Phantom Ligmuh 2 B$340 >= 3 
+Phantom Ligmuh 3 B$340 >= 5 
+Kon-Are You Kryidding Me 1 B364 >= 60 
+Kon-Are You Kryidding Me 2 B363 >= 40 
+Kon-Are You Kryidding Me 3 SUM(B385:B389, B434) > 0 
+God Wars Starter Pack 1  B193+B178 > 0
+God Wars Starter Pack 2 B183 + B192 > 0 
+God Wars Starter Pack 3 B181 + B194 > 0 
+The Fremmy Frontier 1 B380 >= 4 
+The Fremmy Frontier 2 COUNTIF({B331:B332,B329}, ">2") >= 3 
+The Fremmy Frontier 3 B365 +B366>0 
+Desert Treasure II Tile 1 SUM(B$124:B$138) > 0 
+Desert Treasure II Tile 2 SUM(B$124:B$138) > 1 
+Desert Treasure II Tile 3 SUM(B$124:B$138) > 2 
+And My Bow 1 B250 > 0 
+And My Bow 2 SUM(B186:B188) > 0 
+And My Bow 3 B103+B107+B337+B266 > 0 
+And My Axe 1 B249 > 0 
+And My Axe 2 B184 > 0 
+And My Axe 3 B240 + B242 > 0 
+And My +3 Book of Spells 1 B248 > 0 
+And My +3 Book of Spells 2 SUM(B346:B351) > 0 
+And My +3 Book of Spells 3 AND(B259 + B237 > 0, B92 > 0)

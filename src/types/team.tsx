@@ -16,4 +16,4 @@ type TileProgress = {
   task3: TaskProgress;
 };
 
-type TaskProgress = { progress: number; target: number };
+type TaskProgress = { complete: boolean; target: number };
