@@ -45,7 +45,7 @@ function getTaskTabContent(
               {true && (
                 <div className="relative h-20 w-20">
                   <Image
-                    src={"/ledzeps.png"}
+                    src={`/${team.team.captain.toLowerCase()}.png`}
                     alt={team.team.name + " team image"}
                     fill
                     sizes="100%"
