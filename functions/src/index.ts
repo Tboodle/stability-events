@@ -1,14 +1,19 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { google } from "googleapis";
-import { readFileSync } from "fs";
 
 // Initialize Firebase Admin SDK (only once)
 admin.initializeApp();
 
 async function readGoogleSheet() {
   // Retrieve credentials at runtime (not during deployment)
-  const credentials = JSON.parse(readFileSync("./creds.json", "utf8"));
+  const credentialsBase64 = functions.config().google.credentials;
+  if (!credentialsBase64) {
+    throw new Error("Missing Google Sheets credentials in Firebase config.");
+  }
+  const credentials = JSON.parse(
+    Buffer.from(credentialsBase64, "base64").toString("utf8")
+  );
   if (!credentials) {
     throw new Error(
       "Missing GOOGLE_SERVICE_ACCOUNT_JSON environment variable."
@@ -28,6 +33,7 @@ async function readGoogleSheet() {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
+      range: "Data!A9:E39",
     });
     const rows = response.data.values;
 
