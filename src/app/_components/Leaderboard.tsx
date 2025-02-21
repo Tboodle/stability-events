@@ -10,6 +10,8 @@ import { useSelectedTeam } from "../_hooks/useSelectedTeam";
 export default function Leaderboard() {
   const { teams } = useTeams();
   const { selectedTeam, setSelectedTeam } = useSelectedTeam();
+
+  console.log(selectedTeam?.tileProgress);
   return (
     <div className="flex h-full w-full flex-col min-w-[30rem]">
       <span className="text-3xl text-foreground">Leaderboard</span>
