@@ -87,6 +87,18 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
       range: "Data!A9:E84",
     });
 
+    const pointsResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "Data!A2:C5",
+    });
+
+    const pointRows = response.data.values;
+    const points: { [team: string]: number } = {};
+    pointRows?.slice(1).forEach((row) => {
+      const team = (row[0] as string).replace("Team ", "");
+      points[team] = row[2] || 0;
+    });
+
     const rows = response.data.values;
     if (!rows || rows.length < 2) {
       console.warn("No data found in the sheet.");
@@ -149,9 +161,10 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
     // Convert to sorted list format
     const resultData: TeamData[] = Object.values(teams).map((team) => ({
       ...team,
+      points: points[team.team],
       tileProgress: team.tileProgress.sort((a, b) => a.tile - b.tile),
     }));
-
+    console.log(resultData);
     return resultData;
   } catch (error) {
     console.error("Error fetching Google Sheets data", error);
@@ -205,6 +218,8 @@ export const onDropAdded = functions
     functions.logger.info("New document added to 'drops' collection", {
       data: snap.data(),
     });
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
 
     try {
       const results = await fetchAndTransformData();
