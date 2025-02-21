@@ -92,7 +92,7 @@ const fetchAndTransformData = async (): Promise<TeamData[]> => {
       range: "Data!A2:C5",
     });
 
-    const pointRows = response.data.values;
+    const pointRows = pointsResponse.data.values;
     const points: { [team: string]: number } = {};
     pointRows?.slice(1).forEach((row) => {
       const team = (row[0] as string).replace("Team ", "");
