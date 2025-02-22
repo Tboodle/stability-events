@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./_components/theme.provider";
 import NavBar from "./_components/NavBar";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { Analytics } from "@vercel/analytics/react";
 // import * as functions from "firebase-functions";
 // import * as admin from "firebase-admin";
 // import { google } from "googleapis";
@@ -219,6 +220,7 @@ export default function RootLayout({
         >
           <NavBar />
           {children}
+          <Analytics />
         </ThemeProvider>
         {/* <NavBar />
         <div id="main" className="p-2 bg-background text-foreground">
