@@ -5,6 +5,7 @@ import { ThemeProvider } from "./_components/theme.provider";
 import NavBar from "./_components/NavBar";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { Analytics } from "@vercel/analytics/react";
+import { SelectedTeamProvider } from "./_hooks/useSelectedTeam";
 // import * as functions from "firebase-functions";
 // import * as admin from "firebase-admin";
 // import { google } from "googleapis";
@@ -212,16 +213,18 @@ export default function RootLayout({
           maxOpacity={0.3}
           flickerChance={0.2}
         />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NavBar />
-          {children}
-          <Analytics />
-        </ThemeProvider>
+        <SelectedTeamProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavBar />
+            {children}
+            <Analytics />
+          </ThemeProvider>
+        </SelectedTeamProvider>
         {/* <NavBar />
         <div id="main" className="p-2 bg-background text-foreground">
           {children}

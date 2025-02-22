@@ -1,3 +1,5 @@
+"use client";
+
 import { Team } from "@/types/team";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
