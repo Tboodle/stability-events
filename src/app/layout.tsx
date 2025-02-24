@@ -202,12 +202,12 @@ export default function RootLayout({
 }>) {
   // fetchAndTransformData();
   return (
-    <html lang="en">
+    <html lang="en" className="w-full h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-background w-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-background w-full h-full`}
       >
         <FlickeringGrid
-          className="absolute inset-0 -z-10 size-full [mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]"
+          className="absolute inset-0 -z-10 size-full [mask-image:radial-gradient(1100px_circle_at_center,white,transparent)]"
           squareSize={4}
           gridGap={12}
           color="#A52D2A"
