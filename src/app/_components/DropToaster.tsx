@@ -6,7 +6,6 @@ import React, { useEffect } from "react";
 import { useNewDrop } from "../_hooks/useNewDrop";
 import { toast } from "sonner";
 import { useTeams } from "../_hooks/useTeams";
-import moment from "moment";
 import { useRelativeTime } from "../_hooks/useRelativeTime";
 import { Drop } from "@/types/drop";
 import { X } from "lucide-react";

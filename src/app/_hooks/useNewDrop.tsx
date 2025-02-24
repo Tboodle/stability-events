@@ -16,7 +16,7 @@ export const useNewDrop = () => {
           limit(1)
         )
       );
-      if (!firstSnapshotIgnored.current) {
+      if (firstSnapshotIgnored.current) {
         // Skip first snapshot and mark as ignored
         firstSnapshotIgnored.current = true;
         return;
