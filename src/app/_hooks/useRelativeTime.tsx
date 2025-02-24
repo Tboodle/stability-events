@@ -38,7 +38,9 @@ export function useRelativeTime(date: Date | string | number) {
       () => {
         setRelativeTime(getRelativeTimeString(pastDate));
       },
-      relativeTime.includes("seconds") ? 1000 : 30000
+      relativeTime.includes("seconds") || relativeTime.includes("just now")
+        ? 1000
+        : 30000
     );
 
     return () => clearInterval(updateInterval);
