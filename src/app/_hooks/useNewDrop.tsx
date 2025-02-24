@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   collection,
-  getDocs,
   query,
   orderBy,
   limit,
