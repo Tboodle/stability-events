@@ -28,7 +28,7 @@ export const useNewDrop = () => {
               ({
                 id: doc.id,
                 ...doc.data(),
-                date: new Date(doc.data().timestamp as string),
+                date: new Date(doc.data().timestamp + "Z"),
               } as Drop)
           )?.[0]
         );
