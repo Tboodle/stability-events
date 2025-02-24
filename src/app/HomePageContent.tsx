@@ -15,11 +15,9 @@ export default function HomePageContent() {
         </div>
       </div>
       <div className="flex lg:hidden w-full h-full flex-col justify-center items-center gap-8 pb-12 px-2">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Leaderboard />
-          <TeamMembers />
-        </div>
         <BingoBoard />
+        <Leaderboard />
+        <TeamMembers />
       </div>
     </>
   );

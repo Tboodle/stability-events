@@ -11,7 +11,7 @@ export default function Leaderboard() {
   const { teams } = useTeams();
   const { selectedTeam, setSelectedTeam } = useSelectedTeam();
   return (
-    <div className="flex h-full w-full flex-col min-w-[30rem]">
+    <div className="flex h-full w-full flex-col sm:min-w-[30rem]">
       <span className="text-3xl text-foreground">Leaderboard</span>
       <span className="text-xl text-muted-foreground mb-2">
         Click a team to see their progress
@@ -49,7 +49,9 @@ export default function Leaderboard() {
                         />
                       </div>
                     )}
-                    <div className="flex items-center">{team.name}</div>
+                    <div className="items-center hidden sm:flex">
+                      {team.name}
+                    </div>
                   </div>
                 </div>
                 <div>{team.points}</div>
