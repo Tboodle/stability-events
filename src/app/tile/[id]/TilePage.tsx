@@ -34,14 +34,14 @@ function getTaskTabContent(
     .sort((teamA, teamB) => teamA.team.name.localeCompare(teamB.team.name));
   return (
     <Card>
-      <CardTitle className="text-3xl p-8 font-normal mb-4">
+      <CardTitle className="text-3xl p-8 font-normal mb-4 flex flex-col gap-2 sm:flex-row sm:gap-0">
         <span className="mr-4">Task:</span>
         <span className="">{tile[task].description}</span>
       </CardTitle>
       <CardContent className="flex flex-col">
         {teamsWithProgress.map((team) => (
           <div key={team.team.id} className="mb-8 flex items-center">
-            <div className="flex gap-4 w-[30rem]">
+            <div className="flex gap-4 w-fit mr-8 sm:mr-0 sm:w-[30rem]">
               {true && (
                 <div className="relative h-20 w-20">
                   <Image
@@ -54,7 +54,9 @@ function getTaskTabContent(
                   />
                 </div>
               )}
-              <div className="flex items-center text-2xl">{team.team.name}</div>
+              <div className="hidden sm:flex items-center text-2xl">
+                {team.team.name}
+              </div>
             </div>
             <Progress
               value={team.complete ? 100 : 0}
@@ -82,7 +84,7 @@ export function TilePage({ id }: { id: string }): React.ReactElement {
   const { teams } = useTeams();
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full px-4 sm:px-0 my-4 sm:my-0">
       <Button asChild variant="outline" className="text-foreground mb-2 w-fit">
         <Link href={"/"}>
           <ArrowLeft /> Back
@@ -90,8 +92,8 @@ export function TilePage({ id }: { id: string }): React.ReactElement {
       </Button>
       {tile ? (
         <div className="flex flex-col h-full w-full">
-          <div className="flex gap-8 mb-24">
-            <div className="relative w-72 h-72 border-[6px] border-purple-800 rounded-md">
+          <div className="flex gap-8 mb-24 flex-col sm:flex-row">
+            <div className="relative w-72 h-72 border-[6px] border-purple-800 rounded-md mx-auto">
               <Image
                 src={getFileNameForTile(tile.tile)}
                 fill

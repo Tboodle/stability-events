@@ -37,7 +37,6 @@ function getMedalSrcForSelectedTeam(
 
 export default function BingoBoard() {
   const { tiles, loading } = useBingoBoard();
-  console.log(tiles);
 
   return (
     <div className="w-full md:w-[90%] lg:w-3/4 flex justify-center max-w-[900px]">
@@ -75,11 +74,11 @@ function BingoCard({ tile }: { tile: Tile }): React.ReactElement {
     >
       <CardContent
         className={cn(
-          "relative w-full h-full",
+          "relative w-full h-full p-0",
           "transition-transform duration-300 ease-in-out cursor-pointer transform hover:z-50 shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.75)] hover:rounded-sm"
         )}
       >
-        <Link href={`/tile/${tile.id}`}>
+        <Link href={`/tile/${tile.id}`} className="relative h-full w-full flex">
           <Image
             src={getFileNameForTile(tile.tile)}
             fill

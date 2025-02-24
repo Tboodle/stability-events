@@ -17,10 +17,12 @@ export const useNewDrop = () => {
         )
       );
       if (!firstSnapshotIgnored.current) {
-        // Skip first snapshot and mark as ignored
         firstSnapshotIgnored.current = true;
         return;
       }
+
+      console.log(snapshot.docs.map((doc) => doc.data()));
+
       if (!snapshot.empty) {
         setNewDrop(
           snapshot.docs.map(
