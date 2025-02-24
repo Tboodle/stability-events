@@ -13,7 +13,6 @@ export function useBingoBoard(): {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const tilesCollection = collection(firestore, "tiles");
-
     const unsubscribe = onSnapshot(
       tilesCollection,
       (snapshot) => {
