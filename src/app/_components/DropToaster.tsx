@@ -24,7 +24,7 @@ export default function DropToaster(): React.ReactElement {
 
       toast.custom(
         (id) => (
-          <div className="relative flex w-full max-w-sm items-center gap-4 rounded-md border bg-background p-4 shadow-lg mr-8">
+          <div className="relative flex w-80 items-center gap-4 rounded-md border bg-background p-4 shadow-lg">
             {/* Close button in top-right corner */}
             <button
               onClick={() => toast.dismiss(id)}

@@ -22,7 +22,7 @@ export const useNewDrop = () => {
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       // Ignore the first snapshot to prevent setting an initial value
-      if (!firstSnapshotIgnored.current) {
+      if (firstSnapshotIgnored.current) {
         firstSnapshotIgnored.current = true;
         return;
       }
