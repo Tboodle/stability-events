@@ -84,7 +84,6 @@ export default function DropToaster(): React.ReactElement {
 
 function DropToasterDate({ drop }: { drop: Drop }): React.ReactElement {
   const relativeTime = useRelativeTime(drop.date);
-  console.log(drop.date, relativeTime);
   return (
     <div className="text-muted-foreground text text-base">{relativeTime}</div>
   );
