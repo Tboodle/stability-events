@@ -224,7 +224,6 @@ export default function RootLayout({
             <NavBar />
             <main>{children}</main>
             <DropToaster />
-            <Analytics />
           </ThemeProvider>
         </SelectedTeamProvider>
         {/* <NavBar />
